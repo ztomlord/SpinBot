@@ -8,9 +8,8 @@ const int ledPin =  LED_BUILTIN;
 //max pulse length (before excessive cooldown): 1.8 ms
 //cooldown per pulse 260 us
 
-const long beaconID_us = 750;
-const long idRepeat_us = 3000; //at top speed of 1600 rpm, this provides 3 samples per quadrant
-unsigned long idTimer = 0;
+const long beaconID_us = 1500;
+const long pulseRecovery_us = 250;
 unsigned long repeatTimer = 0;
 
 
@@ -40,13 +39,12 @@ void loop() {
 void transmit_ID()
 {
   unsigned long currentMicros = micros();
-  if(currentMicros - repeatTimer >= idRepeat_us || currentMicros < repeatTimer)
+  if(currentMicros - repeatTimer >= beaconID_us + pulseRecovery_us)
   {
     repeatTimer = currentMicros;
-    idTimer = currentMicros;
   }
-
-  if(currentMicros - idTimer <= beaconID_us)
+  
+  if(currentMicros - repeatTimer < beaconID_us)
   {
     Timer2_On();
   }

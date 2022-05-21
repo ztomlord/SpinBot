@@ -1,7 +1,6 @@
 //Should work on any arduino (no hardware specific funtionality)
 
-const long pulseLengths_us[] = {750,1000,1250,1500};
-const long idRepeat_us = 3000;
+const long pulseLengths_us[] = {1000,1250,1500,1750};
 
 const int ledPin =  LED_BUILTIN;
 const int irRecPin =  12;
@@ -50,7 +49,7 @@ void loop() {
 
 int findClosestId(int pulseLength)
 {
-  long smallestError = idRepeat_us;
+  long smallestError = 1000000;
   int bestId = -1;
   for(int i = 0;i< sizeof(pulseLengths_us);i++)
   {
