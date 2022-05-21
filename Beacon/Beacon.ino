@@ -1,3 +1,4 @@
+//currently designed for arduino pro mini 328 - 3.3v/8Mhz board
 
 const int ledPin =  LED_BUILTIN;
 
@@ -13,6 +14,7 @@ unsigned long idTimer = 0;
 unsigned long repeatTimer = 0;
 
 
+//registers determined from atmega 328p doc: (https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf)
 
 #define Timer2_On()   TCCR2A = _BV(COM2A0) | _BV(WGM21)
 #define Timer2_Off()   TCCR2A = _BV(COM2A1) | _BV(WGM21)
