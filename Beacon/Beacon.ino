@@ -8,7 +8,7 @@ const int ledPin =  LED_BUILTIN;
 //max pulse length (before excessive cooldown): 1.8 ms
 //cooldown per pulse 260 us
 
-const long beaconID_us = 1500;
+const long beaconID_us = 1500; //1000,1250,1500,1750
 const long pulseRecovery_us = 250;
 unsigned long repeatTimer = 0;
 
